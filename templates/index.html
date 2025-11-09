@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insurance Charge Prediction</title>
+    <style>
+        /* --- General Page Styling --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* --- Form Container --- */
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+            width: 400px;
+            text-align: center;
+        }
+
+        /* --- Heading --- */
+        h2 {
+            color: #333333;
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* --- Input Labels --- */
+        label {
+            display: block;
+            text-align: left;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+
+        /* --- Input Fields --- */
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            transition: 0.3s ease;
+        }
+
+        /* --- Input Focus Effect --- */
+        input[type="number"]:focus {
+            border-color: #74ebd5;
+            box-shadow: 0px 0px 6px rgba(116, 235, 213, 0.5);
+            outline: none;
+        }
+
+        /* --- Submit Button --- */
+        input[type="submit"] {
+            background-color: #74ebd5;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5ac8b4;
+        }
+
+        /* --- Prediction Text --- */
+        h3 {
+            color: #222;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Insurance Prediction Form</h2>
+        <form action="/predict" method="POST">
+
+            <label>Age:</label>
+            <input type="number" name="age" step="any" required>
+
+            <label>Sex (0=Female, 1=Male):</label>
+            <input type="number" name="sex" required>
+
+            <label>BMI:</label>
+            <input type="number" name="bmi" step="any" required>
+
+            <label>Children:</label>
+            <input type="number" name="children" required>
+
+            <label>Smoker (0=No, 1=Yes):</label>
+            <input type="number" name="smoker" required>
+
+            <label>Claim Amount:</label>
+            <input type="number" name="Claim_Amount" step="any" required>
+
+            <label>Past Consultations:</label>
+            <input type="number" name="past_consultations" required>
+
+            <label>Number of Steps:</label>
+            <input type="number" name="num_of_steps" step="any" required>
+
+            <label>Hospital Expenditure:</label>
+            <input type="number" name="Hospital_expenditure" step="any" required>
+
+            <label>Number of Past Hospitalizations:</label>
+            <input type="number" name="NUmber_of_past_hospitalizations" required>
+
+            <label>Annual Salary:</label>
+            <input type="number" name="Anual_Salary" step="any" required>
+
+            <label>Region (0–3):</label>
+            <input type="number" name="region" required>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
